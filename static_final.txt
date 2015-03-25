@@ -1,0 +1,28 @@
+
+import java.util.*;
+
+public class HelloWorld{
+
+     public static void main(String []args){
+         A a = new A();
+         System.out.println(A.EXAMPLE[0].th);
+         
+         final Thing[] ex = {new Thing("BEEEEEEEEEEEEEEEEEE")};
+         a.EXAMPLE[0] = ex[0];
+         
+         System.out.println(a.EXAMPLE[0].th);
+      
+     }
+     
+     static class Thing{
+         private String th;
+         
+         public Thing(String th){
+             this.th = th;
+         }
+     }
+     
+     static class A{
+         static final Thing[] EXAMPLE = {new Thing("JEE")};
+     }
+}
