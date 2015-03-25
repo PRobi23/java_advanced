@@ -1,0 +1,28 @@
+
+import java.util.*;
+
+public class HelloWorld{
+
+     public static void main(String []args){
+        Animal a = new Animal();
+        System.out.println(a.Print());
+        
+        Animal h = new Horse();
+        System.out.println(h.Print());
+     }
+     
+     static class Animal{
+         protected String Print(){
+             return "Animal";
+         }
+         
+     }
+     
+     static class Horse extends Animal{
+         @Override
+         public String Print(){
+             return "Horse";
+         }
+         
+     }
+}
