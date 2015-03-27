@@ -1,0 +1,30 @@
+import java.math.BigDecimal;
+ 
+/**
+ * Mutable Companion for Money Class
+ */
+class MoneyMutable {
+  private BigDecimal amount;
+ 
+	public MoneyMutable(BigDecimal money) {
+		this.amount = money;
+	}
+ 
+	public BigDecimal getAmount() {
+		return amount;
+	}
+ 
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+ 
+	public MoneyMutable add(BigDecimal money) {
+		this.amount.add(money);
+		return this;
+	}
+	
+	public MoneyMutable divide(BigDecimal money) {
+		this.amount.divide(money);
+		return this;
+	}
+}

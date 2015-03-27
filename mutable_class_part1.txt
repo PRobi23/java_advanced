@@ -1,0 +1,36 @@
+import java.math.BigDecimal;
+ 
+/**
+ * Immutable class for Money. A final class with no setters.
+ */
+public final class Money {
+  private BigDecimal amount;
+ 
+	public Money(BigDecimal bigDecimal) {
+		this.amount = bigDecimal;
+	}
+ 
+	public BigDecimal getAmount() {
+		return this.amount;
+	}
+ 
+	// Notice the exclusively accessibility
+	public Money add(BigDecimal money) {
+		return new Money(this.amount.add(money));
+	}
+ 
+	private MoneyMutable getMutableVersion() {
+		return new MoneyMutable(this.amount);
+	}
+ 
+	public Money complexOperation(BigDecimal money) {
+		MoneyMutable mutableMoney = this.getMutableVersion();
+		mutableMoney.add(money);
+		mutableMoney.divide(money);
+		/*
+		 * suppose it is a complex operation which modifies the mutable money
+		 * class a 100 times.
+		 */
+		return new Money(mutableMoney.getAmount());
+	}
+}
