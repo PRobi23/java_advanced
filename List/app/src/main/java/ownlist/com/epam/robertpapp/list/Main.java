@@ -11,9 +11,11 @@ public class Main {
         Animal a = new Animal("Dévai István", 33);
 
         AnimalAbstractList list = new AnimalAbstractList();
-        list.add(0, a);
 
+        list.add(a);
         System.out.println(list.get(0).toString());
+        System.out.println("Size:" + list.size());
+        System.out.println("Is empty" + list.isEmpty());
     }
 }
 

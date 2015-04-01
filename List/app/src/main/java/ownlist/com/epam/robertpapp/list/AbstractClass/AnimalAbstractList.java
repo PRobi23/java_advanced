@@ -3,10 +3,12 @@ package ownlist.com.epam.robertpapp.list.AbstractClass;
 import android.support.annotation.NonNull;
 
 import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+
 
 import ownlist.com.epam.robertpapp.list.Animal;
 
@@ -14,43 +16,38 @@ import ownlist.com.epam.robertpapp.list.Animal;
  * Created by Robert_Papp1 on 3/31/2015.
  */
 
-public class AnimalAbstractList implements List<Animal> {
+public class AnimalAbstractList implements Collection<Animal> {
 
-    private Animal [] animals = new Animal[20];
+    private List<Animal> animals = new ArrayList<>();
 
     private class AnimalAbstractListForwarder extends AbstractList<Animal> {
-
         public void AnimalAbstractListForwarder() {
 
         }
 
         @Override
         public Animal get(int location) {
-            return null;
+            return animals.get(location);
         }
 
         @Override
         public int size() {
-            return 0;
+            return animals.size();
         }
     }
 
     AnimalAbstractListForwarder r = new AnimalAbstractListForwarder();
 
     @Override
-    public void add(int location, Animal object) {
-        animals[location] = object;
-    }
-
-    @Override
     public boolean add(Animal object) {
         add(0, object);
+
         return true;
     }
 
-    @Override
-    public boolean addAll(int location, Collection<? extends Animal> collection) {
-        return addAll(location, collection);
+
+    public void add(int location, Animal object) {
+       animals.add(location, object);
     }
 
     @Override
@@ -60,7 +57,7 @@ public class AnimalAbstractList implements List<Animal> {
 
     @Override
     public void clear() {
-
+        r.clear();
     }
 
     @Override
@@ -74,18 +71,8 @@ public class AnimalAbstractList implements List<Animal> {
     }
 
     @Override
-    public Animal get(int location) {
-        return animals[location];
-    }
-
-    @Override
-    public int indexOf(Object object) {
-        return 0;
-    }
-
-    @Override
     public boolean isEmpty() {
-        return false;
+        return r.isEmpty();
     }
 
     @NonNull
@@ -95,30 +82,8 @@ public class AnimalAbstractList implements List<Animal> {
     }
 
     @Override
-    public int lastIndexOf(Object object) {
-        return 0;
-    }
-
-    @NonNull
-    @Override
-    public ListIterator<Animal> listIterator() {
-        return null;
-    }
-
-    @NonNull
-    @Override
-    public ListIterator<Animal> listIterator(int location) {
-        return null;
-    }
-
-    @Override
-    public Animal remove(int location) {
-        return null;
-    }
-
-    @Override
     public boolean remove(Object object) {
-        return false;
+        return r.remove(object);
     }
 
     @Override
@@ -132,19 +97,12 @@ public class AnimalAbstractList implements List<Animal> {
     }
 
     @Override
-    public Animal set(int location, Animal object) {
-        return r.set(location, object);
-    }
-
-    @Override
     public int size() {
-        return animals.length;
+        return r.size();
     }
 
-    @NonNull
-    @Override
-    public List<Animal> subList(int start, int end) {
-        return null;
+    public Animal get(int location) {
+        return r.get(location);
     }
 
     @NonNull
@@ -158,4 +116,6 @@ public class AnimalAbstractList implements List<Animal> {
     public <T> T[] toArray(T[] array) {
         return null;
     }
+
+
 }

@@ -30,6 +30,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return String.format("The idiots name: " + name);
+        return String.format("The animals name: " + name);
     }
 }
